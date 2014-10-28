@@ -16,7 +16,10 @@
 
 namespace Elcodi\Bundle\CoreBundle;
 
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
 
 /**
  * ElcodiCoreBundle Bundle
@@ -27,4 +30,25 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ElcodiCoreBundle extends Bundle
 {
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiCoreExtension();
+    }
+
+    /**
+     * Finds and registers Commands.
+     *
+     * Override this method if your bundle commands do not follow the conventions:
+     *
+     * * Commands are in the 'Command' sub-directory
+     * * Commands extend Symfony\Component\Console\Command\Command
+     */
+    public function registerCommands()
+    {
+    }
 }
